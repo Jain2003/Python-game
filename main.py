@@ -25,7 +25,6 @@ side_frame = Frame(
 )
 side_frame.place(x=0, y=cal.height_cal(25))
 
-
 center_frame = Frame(
     root,
     bg="blue",
