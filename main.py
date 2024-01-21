@@ -33,13 +33,13 @@ center_frame = Frame(
 )
 center_frame.place(x=cal.width_cal(15), y=cal.height_cal(25))
 
-c1 = Cell()
-c1.create_btn_obj(center_frame)
-c1.cell_btn_obj.place(x=0, y=0)
-
 for x in range(settings.GRID_SIZE):
     for y in range(settings.GRID_SIZE):
-        c = Cell()
+        c = Cell(y,x)
         c.create_btn_obj(center_frame)
         c.cell_btn_obj.grid(column=x, row=y)
+
+
+Cell.random_mines()
+# print(Cell.all_cells)
 root.mainloop()
