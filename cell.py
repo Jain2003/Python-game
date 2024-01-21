@@ -1,8 +1,9 @@
-from tkinter import Button
+from tkinter import Button, Label
 import random
 import settings
 class Cell:
     all_cells = []
+    # cell_count_label_object = None
     def __init__(self,x,y, is_mine=False):
         self.is_mine = is_mine
         self.x = x
@@ -18,11 +19,23 @@ class Cell:
         btn.bind("<Button-1>", self.left_click_action)
         btn.bind("<Button-3>", self.right_click_action)
         self.cell_btn_obj = btn
+    
+    # @staticmethod
+    # def create_cell_count_label(location):
+    #     lbl = Label(
+    #         location,
+    #         text = f"Cells count:{settings.CELL_COUNT}"
+    #     )
+    #     Cell.cell_count_label_object = lbl
 
     def left_click_action(self, event):
         if self.is_mine:
             self.show_mine()
         else:
+            if self.mines_count == 0:
+                self.show_cell()
+                for cell in self.surrounded_cells:
+                    cell.show_cell()
             self.show_cell()
     
     def get_cell_by_axes(self, x, y):
@@ -63,7 +76,6 @@ class Cell:
 
     def right_click_action(self, event):
         print("Right click")
-    
     
 
     @staticmethod

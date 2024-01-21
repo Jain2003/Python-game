@@ -39,7 +39,8 @@ for x in range(settings.GRID_SIZE):
         c.create_btn_obj(center_frame)
         c.cell_btn_obj.grid(column=x, row=y)
 
-
+# Cell.create_cell_count_label(side_frame)
+# Cell.cell_count_label_object.place(x=0, y=0)
 Cell.random_mines()
 # print(Cell.all_cells)
 root.mainloop()
