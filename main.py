@@ -35,7 +35,7 @@ center_frame.place(x=cal.width_cal(15), y=cal.height_cal(25))
 
 btn1 = Button(
     center_frame,
-    bg="white",
+    bg="orange",
     text="Click Me",
     font="arial 20 bold",
 )
