@@ -1,7 +1,7 @@
 from tkinter import *
 import settings
 import cal
-
+from cell import Cell
 root = Tk()
 
 root.configure(bg="black")
@@ -11,7 +11,7 @@ root.title("Python Game")
 
 top_frame = Frame(
     root,
-    bg="green",
+    bg="black",
     height=cal.height_cal(25),
     width=cal.width_cal(100)
 )
@@ -19,7 +19,7 @@ top_frame.place(x=0, y=0)
 
 side_frame = Frame(
     root,
-    bg="red",
+    bg="black",
     height=cal.height_cal(75),
     width=cal.width_cal(15)
 )
@@ -27,18 +27,19 @@ side_frame.place(x=0, y=cal.height_cal(25))
 
 center_frame = Frame(
     root,
-    bg="blue",
+    bg="black",
     height=cal.height_cal(75),
     width=cal.width_cal(85)
 )
 center_frame.place(x=cal.width_cal(15), y=cal.height_cal(25))
 
-btn1 = Button(
-    center_frame,
-    bg="orange",
-    text="Click Me",
-    font="arial 20 bold",
-)
+c1 = Cell()
+c1.create_btn_obj(center_frame)
+c1.cell_btn_obj.place(x=0, y=0)
 
-btn1.place(x=cal.width_cal(0), y=cal.height_cal(0))
+for x in range(settings.GRID_SIZE):
+    for y in range(settings.GRID_SIZE):
+        c = Cell()
+        c.create_btn_obj(center_frame)
+        c.cell_btn_obj.grid(column=x, row=y)
 root.mainloop()
