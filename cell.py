@@ -3,7 +3,6 @@ import random
 import settings
 class Cell:
     all_cells = []
-    # cell_count_label_object = None
     def __init__(self,x,y, is_mine=False):
         self.is_mine = is_mine
         self.x = x
@@ -19,14 +18,6 @@ class Cell:
         btn.bind("<Button-1>", self.left_click_action)
         btn.bind("<Button-3>", self.right_click_action)
         self.cell_btn_obj = btn
-    
-    # @staticmethod
-    # def create_cell_count_label(location):
-    #     lbl = Label(
-    #         location,
-    #         text = f"Cells count:{settings.CELL_COUNT}"
-    #     )
-    #     Cell.cell_count_label_object = lbl
 
     def left_click_action(self, event):
         if self.is_mine:
@@ -67,8 +58,6 @@ class Cell:
         return count
 
     def show_cell(self):
-        # print(self.surrounded_cells)
-        # print(self.mines_count)
         self.cell_btn_obj.configure(bg="green", text=self.mines_count)
 
     def show_mine(self):
@@ -83,7 +72,6 @@ class Cell:
         mine_cells = random.sample(Cell.all_cells, settings.MINES_COUNT)
         for cell in mine_cells:
             cell.is_mine = True
-        # print(mine_cells)
 
     def __repr__(self):
         return f"Cell({self.x}, {self.y}, {self.is_mine})"
